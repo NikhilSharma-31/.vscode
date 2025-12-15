@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agency.io</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#6d5cff;
+      --primary-dark:#5a49f5;
+      --text:#0f172a;
+      --muted:#64748b;
+      --bg:#ffffff;
+      --card:#ffffff;
+      --border:#e5e7eb;
+    }
+
+    body.dark{
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --bg:#020617;
+      --card:#020617;
+      --border:#1e293b;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    body{
+      font-family:Inter,system-ui,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      transition:background .3s,color .3s;
+    }
+
+    a{text-decoration:none;color:inherit;cursor:pointer}
+
+    .toggle{
+      width:44px;height:24px;border-radius:999px;
+      background:#e5e7eb;position:relative;
+      cursor:pointer;transition:.3s;
+    }
+
+    .toggle::after{
+      content:"";
+      width:18px;height:18px;
+      background:#fff;border-radius:50%;
+      position:absolute;top:3px;left:3px;
+      transition:.3s;
+    }
+
+    body.dark .toggle{
+      background:#334155;
+    }
+
+    body.dark .toggle::after{
+      left:23px;
+      background:#0f172a;
+    }
+
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(18px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    a,.btn-primary,.btn-secondary,.card{
+      transition:.25s ease;
+    }
+
+    .nav{
+      position:sticky;top:0;z-index:10;
+      background:var(--bg);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav-inner{
+      max-width:1200px;margin:auto;
+      padding:16px 24px;
+      display:flex;align-items:center;gap:20px;
+    }
+
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700}
+    .logo span{
+      width:32px;height:32px;border-radius:8px;
+      background:var(--primary);color:#fff;
+      display:grid;place-items:center;
+    }
+
+    .nav-links{display:flex;gap:28px;margin-left:auto}
+
+    .btn-primary{
+      background:var(--primary);color:#fff;
+      padding:10px 18px;border-radius:999px;
+      font-weight:600;
+    }
+
+    .hero{
+      background:linear-gradient(180deg,#f5f7ff,transparent);
+    }
+
+    body.dark .hero{
+      background:linear-gradient(180deg,#020617,transparent);
+    }
+
+    .hero-inner{
+      max-width:1100px;margin:auto;
+      padding:90px 24px 110px;
+      text-align:center;
+      animation:fadeUp .9s ease both;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:6px 14px;border-radius:999px;
+      background:#eef2ff;color:var(--primary);
+      font-size:14px;font-weight:600;
+    }
+
+    body.dark .badge{
+      background:#1e293b;
+    }
+
+    .hero h1{font-size:52px;margin:20px 0}
+    .gradient{
+      background:linear-gradient(90deg,#6d5cff,#8b5cf6);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+
+    .hero p{max-width:700px;margin:0 auto 34px;color:var(--muted)}
+
+    section{padding:90px 24px}
+    .container{max-width:1100px;margin:auto}
+
+    .cards{
+      display:grid;grid-template-columns:1fr 1fr;
+      gap:30px;margin-top:50px;
+    }
+
+    .card{
+      border:1px solid var(--border);
+      border-radius:20px;padding:34px;
+      background:var(--card);
+    }
+
+    .card:hover{transform:translateY(-6px)}
+
+    .cta{
+      background:radial-gradient(circle at top,#1e293b,#020617);
+      color:#fff;text-align:center;
+    }
+
+    footer{
+      padding:70px 24px;border-top:1px solid var(--border);
+    }
+
+    .footer{
+      max-width:1100px;margin:auto;
+      display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;
+      gap:40px;
+    }
+
+    input{
+      padding:10px 14px;border-radius:10px;
+      border:1px solid var(--border);
+      background:var(--bg);color:var(--text);
+    }
+
+    @media(max-width:900px){
+      .cards,.footer{grid-template-columns:1fr}
+      .hero h1{font-size:38px}
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo"><span>A</span>Agency.io</div>
+    <div class="nav-links">
+      <a>Services</a><a>Process</a><a>Work</a><a>Pricing</a>
+    </div>
+    <div class="toggle" id="themeToggle"></div>
+    <a class="btn-primary">Book Call</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="badge">• Accepting new projects for Q1</div>
+    <h1>Turn your expertise into<br><span class="gradient">AI-powered Reality</span></h1>
+    <p>We help ambitious brands and startups design, build, and scale world-class digital products.</p>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2 style="text-align:center">Tailored for every stage</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Startups</h3>
+        <p>Move fast and validate ideas quickly.</p>
+      </div>
+      <div class="card">
+        <h3>Enterprises</h3>
+        <p>Systems built for long-term scalability.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Ready to build the future?</h2>
+  <p>Join hundreds of founders and leaders.</p>
+  <a class="btn-primary">Book your consultation</a>
+</section>
+
+<footer>
+  <div class="footer">
+    <div>
+      <div class="logo"><span>A</span>Agency.io</div>
+      <p>Crafting digital experiences with precision.</p>
+    </div>
+    <div><strong>Company</strong><p>About<br>Careers</p></div>
+    <div><strong>Resources</strong><p>Case Studies<br>Help</p></div>
+    <div><strong>Newsletter</strong><input placeholder="Enter email"></div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById("themeToggle");
+  toggle.onclick = () => {
+    document.body.classList.toggle("dark");
+  };
+</script>
+
+</body>
+</html>
